@@ -1,7 +1,10 @@
 import 'dart:async';
+import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_demo/services/api_service.dart';
+import 'package:flutter_demo/utils/HttpOverrides.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
 import 'dart:io';
@@ -20,6 +23,8 @@ import 'widgets/toast.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  HttpOverrides.global = MyHttpOverrides();
 
   // 添加日志过滤
   debugPrint = (String? message, {int? wrapWidth}) {
